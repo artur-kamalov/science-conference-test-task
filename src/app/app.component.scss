@@ -1,0 +1,132 @@
+@import 'mixins';
+
+.banner {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8vh 5vw;
+  gap: 4vh;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    url('/assets/imgs/blur_logo.png') no-repeat 40vw 5vw,
+    linear-gradient(135deg, white 60%, rgba(104, 244, 244, 0.22) 65%, rgba(0, 218, 232, 0.61));
+  background-size: 100%;
+
+  @include orientation(vertical) {
+    background:
+      url('/assets/imgs/blur_logo.png') no-repeat 5vh 60vh,
+      linear-gradient(135deg, white 50%, rgba(216, 255, 255, 0.53) 55%, rgb(0, 228, 243));
+    background-size: 150%;
+
+    gap: 20vh;
+  }
+}
+.banner:after {
+  content: '';
+  background: url('/assets/imgs/logo.png') no-repeat bottom left;
+  width: 100%;
+  height: 100%;
+  background-size: 55vw;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: rotate(45deg) translate(15vw, 46vw);
+
+  @include orientation(vertical) {
+    background-size: 60vh;
+    transform: rotate(45deg) translate(-25vh, 5vh);
+  }
+}
+
+.banner-logo {
+  display: flex;
+  gap: 10px;
+  min-width: 150px;
+  width: 12vw;
+  min-height: 120px;
+  justify-content: center;
+  align-items: end;
+  z-index: 1;
+}
+.logo__img {
+  object-fit: contain;
+  min-height: 100%;
+  height: calc(100% + 1vw + 1vh);
+  transform: rotate(25deg);
+}
+.logo__label {
+  font-size: clamp(25px, 2vw, 2vw);
+  font-weight: 500;
+  height: max-content;
+}
+.text-gradient {
+  background: linear-gradient(to right, #0055F9, #00DAE8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: block;
+}
+.banner__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  gap: 2vh;
+}
+.banner__title {
+  text-align: center;
+  font-size: 7vw;
+  color: #0156FA;
+  z-index: 1;
+
+  @include orientation(vertical) {
+    font-size: 10vw;
+  }
+}
+.banner__call-to-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  font-size: 3vw;
+  z-index: 1;
+
+  @include orientation(vertical) {
+    font-size: 3vh;
+  }
+}
+.denied {
+  font-size: 5vw;
+
+  @include orientation(vertical) {
+    font-size: 5vh;
+  }
+}
+.banner__input {
+  display: block;
+  width: 70%;
+  min-height: 57px;
+  height: 6vh;
+  font-size: calc(20px + 1vw);
+  padding: 10px;
+  background: white;
+  border-bottom: 2px #01DAE8 solid;
+  box-shadow: 0 0 20px 1px rgba(1, 218, 232, 0.18);
+  pointer-events: auto;
+  z-index: 1;
+
+  @include orientation(vertical) {
+    width: 90%;
+  }
+}
+.hidden {
+  opacity: 0;
+  height: 0;
+  width: 0;
+  position: absolute;
+}

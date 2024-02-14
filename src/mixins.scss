@@ -1,0 +1,11 @@
+@mixin orientation($direction) {
+  $orientation-horizontal: "(orientation:landscape)";
+  $orientation-vertical: "(orientation:portrait)";
+
+  @if $direction == horizontal {
+    @media #{$orientation-horizontal} { @content; }
+  }
+  @if $direction == vertical {
+    @media #{$orientation-vertical} { @content; }
+  }
+}

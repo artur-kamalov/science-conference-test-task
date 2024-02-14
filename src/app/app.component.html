@@ -1,0 +1,49 @@
+<div class="banner">
+  <div class="banner-logo">
+    <img class="logo__img" src="assets/imgs/logo.png" alt="Логотип">
+    <h3 class="logo__label">
+      <span class="text-gradient">ЭСТЕТИЧЕСКАЯ</span>
+      МЕДИЦИНА <br>
+      БУДУЩЕГО
+    </h3>
+  </div>
+
+  <div class="banner__content">
+    <h1 class="banner__title">
+      <ng-container *ngIf="isWaiting; else allowed">
+        НАУЧНЫЙ ЗАЛ
+      </ng-container>
+      <ng-template #allowed>
+        {{ name }}
+      </ng-template>
+    </h1>
+    <ng-container>
+      <p  *ngIf="isWaiting; else result" class="banner__call-to-action">
+        ПОКАЖИТЕ СВОЙ <br>
+        QR-КОД
+      </p>
+      <input
+        [ngClass]="!isWaiting ? 'hidden' : ''"
+        class="banner__input"
+        (keyup.enter)="submit($event)"
+        onblur="this.focus()"
+        autofocus
+      />
+    </ng-container>
+
+    <ng-template #result>
+      <ng-container *ngIf="isSuccess; else denied">
+        <p class="banner__call-to-action success">
+          ВАШЕ МЕСТО: <br>
+          РЯД: 2 - МЕСТО - 14
+        </p>
+      </ng-container>
+      <ng-template #denied>
+        <p class="banner__call-to-action">
+          ДОСТУП В ЗАЛ <br>
+          <span class="denied">ЗАПРЕЩЕН</span>
+        </p>
+      </ng-template>
+    </ng-template>
+  </div>
+</div>
